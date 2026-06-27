@@ -12,9 +12,385 @@ st.set_page_config(
     page_title="AI-Based Agricultural Demand and Supply Forecasting",
     layout="wide"
 )
+# =====================================================
+# CUSTOM CSS
+# =====================================================
+st.markdown("""
+<style>
 
-st.title("🌾 AI-Based Agricultural Demand and Supply Forecasting System")
+/* ==========================
+   APP
+========================== */
 
+.stApp{
+    background:#f4f8f5;
+    color:#1f2937;
+}
+
+.block-container{
+    padding-top:1rem;
+    padding-bottom:2rem;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+section[data-testid="stSidebar"]{
+    background:linear-gradient(180deg,#14532d,#166534);
+}
+
+section[data-testid="stSidebar"] *{
+    color:white;
+}
+/* Sidebar Title */
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3{
+    color:white !important;
+}
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label{
+    color:white !important;
+}
+
+section[data-testid="stSidebar"]{
+    border-right: none !important;
+    box-shadow: none !important;
+}
+
+section[data-testid="stSidebar"] > div{
+    border-right: none !important;
+    box-shadow: none !important;
+}  
+[data-testid="stSidebar"]{
+    border: none !important;
+}
+
+[data-testid="stSidebar"] > div:first-child{
+    border-right: none !important;
+}            
+                                  
+
+/* ==========================
+   HEADINGS
+========================== */
+
+h1,h2,h3,h4,h5,h6{
+    color:#14532d !important;
+    font-weight:700;
+}
+
+p,label{
+    color:#1f2937 !important;
+}
+
+/* ==========================
+   METRICS
+========================== */
+
+div[data-testid="stMetric"]{
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    border-left:6px solid #16a34a;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+}
+
+div[data-testid="stMetricValue"]{
+    color:#14532d !important;
+    font-size:28px;
+    font-weight:bold;
+}
+
+div[data-testid="stMetricLabel"]{
+    color:#374151 !important;
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
+.stButton button,
+.stDownloadButton button{
+
+    background:#16a34a !important;
+    color:white !important;
+
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.stButton button:hover,
+.stDownloadButton button:hover{
+
+    background:#15803d !important;
+}
+
+/* ==========================
+   SELECTBOX FIX
+========================== */
+
+div[data-baseweb="select"]{
+
+    background:white !important;
+
+    border-radius:10px;
+
+}
+
+/* selected value */
+
+div[data-baseweb="select"] span{
+
+    color:#111827 !important;
+
+    -webkit-text-fill-color:#111827 !important;
+
+}
+
+div[data-baseweb="select"] input{
+
+    color:#111827 !important;
+
+    -webkit-text-fill-color:#111827 !important;
+
+    caret-color: transparent !important;
+
+}
+
+/* arrow */
+
+div[data-baseweb="select"] svg{
+
+    color:#111827 !important;
+
+    fill:#111827 !important;
+
+}
+
+/* dropdown */
+
+ul[role="listbox"]{
+
+    background:white !important;
+
+}
+
+ul[role="listbox"] li{
+
+    color:#111827 !important;
+
+    background:white !important;
+
+}
+
+ul[role="listbox"] li:hover{
+
+    background:#dbeafe !important;
+
+}
+
+/* ==========================
+   INPUT
+========================== */
+
+input{
+
+    color:#111827 !important;
+
+    background:white !important;
+
+}
+            
+div[data-baseweb="select"] input{
+    caret-color: transparent !important;
+}            
+
+textarea{
+
+    color:#111827 !important;
+
+}
+
+/* Number Input Style */
+
+div[data-testid="stNumberInput"] input{
+    background:#1f2937 !important;
+    color:white !important;
+    -webkit-text-fill-color:white !important;
+    border:1px solid #374151 !important;
+}
+
+div[data-testid="stNumberInput"] button{
+    background:#1f2937 !important;
+    color:white !important;
+}
+                          
+/* ==========================
+   DATAFRAME
+========================== */
+
+[data-testid="stDataFrame"]{
+    border-radius:12px;
+    overflow:hidden;
+}
+
+/* Table */
+
+table{
+    color:#111827 !important;
+}
+
+/* Header */
+
+thead th{
+
+    background:#14532d !important;
+
+    color:white !important;
+
+    text-align:left !important;
+
+}
+
+/* Body */
+
+tbody td{
+
+    color:#111827 !important;
+
+    background:white !important;
+
+    text-align:left !important;
+
+}
+
+/* ==========================
+   CODE BLOCK
+========================== */
+
+pre{
+
+    color:white !important;
+
+}
+
+code{
+
+    color:white !important;
+
+}
+
+/* ==========================
+   ALERTS
+========================== */
+
+div[data-testid="stAlert"]{
+
+    border-radius:12px;
+
+}
+
+/* ==========================
+   MARKDOWN
+========================== */
+
+div[data-testid="stMarkdownContainer"]{
+
+    color:#111827 !important;
+
+}
+
+/* ==========================
+   STREAMLIT TOOLBAR HIDE
+========================== */
+
+#MainMenu{
+    visibility:hidden;
+}
+
+header{
+    visibility:hidden;
+}
+
+footer{
+    visibility:hidden;
+}
+
+[data-testid="stToolbar"]{
+    display:none !important;
+}
+
+[data-testid="stDecoration"]{
+    display:none !important;
+}
+
+[data-testid="stStatusWidget"]{
+    display:none !important;
+}
+
+/* ==========================
+   FIX SELECTED VALUE
+========================== */
+
+.stSelectbox div[data-baseweb="select"] > div{
+    background:#1f2937 !important;
+}
+
+.stSelectbox div[data-baseweb="select"] > div span{
+    color:white !important;
+    -webkit-text-fill-color:white !important;
+}
+
+.stSelectbox div[data-baseweb="select"] input{
+    color:white !important;
+    -webkit-text-fill-color:white !important;
+    caret-color: transparent !important;
+    outline:none !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.stSelectbox div[data-baseweb="select"] svg{
+    fill:white !important;
+    color:white !important;
+}
+
+ul[role="listbox"]{
+    background:#111827 !important;
+}
+
+ul[role="listbox"] li{
+    color:white !important;
+    background:#111827 !important;
+}
+
+ul[role="listbox"] li:hover{
+    background:#374151 !important;
+}
+
+/* ==========================
+   PLACEHOLDER TEXT
+========================== */
+
+::placeholder{
+
+    color:#6b7280 !important;
+
+}                                    
+            
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+# 🌾 AI-Based Agricultural Demand and Supply Forecasting System
+
+### AI Powered Crop Yield, Demand & Supply Forecasting Dashboard
+""")
 # =====================================================
 # LOAD MODELS
 # =====================================================
@@ -48,6 +424,13 @@ def load_models():
     le_crop = joblib.load(
         r"D:\le_crop.pkl"
     )
+    demand_model = joblib.load(
+    r"D:\demand_model.pkl"
+    )
+
+    supply_model = joblib.load(
+    r"D:\supply_model.pkl"
+    )
 
     return (
         xgb_model,
@@ -56,7 +439,9 @@ def load_models():
         scaler_y,
         le_state,
         le_district,
-        le_crop
+        le_crop,
+        demand_model,
+        supply_model
     )
 
 
@@ -67,7 +452,7 @@ def load_models():
 def load_data():
 
     final_dataset = pd.read_csv(
-        r"D:\final_dataset.csv"
+        r"D:\final_dataset_enhanced.csv"
     )
 
     recommendation_df = pd.read_csv(
@@ -105,7 +490,10 @@ def load_data():
     scaler_y,
     le_state,
     le_district,
-    le_crop
+    le_crop,
+    demand_model,
+    supply_model
+
 ) = load_models()
 
 (
@@ -156,34 +544,70 @@ if "air_pressure" not in st.session_state:
 # =====================================================
 # SIDEBAR
 # =====================================================
-st.sidebar.title("Navigation")
+st.sidebar.image(
+"https://img.icons8.com/color/96/agriculture.png",
+width=80
+)
+
+st.sidebar.title("🌾 Navigation")
+st.sidebar.markdown("---")
 
 page = st.sidebar.selectbox(
     "Select Menu",
     [
-        "Home",
-        "Dataset",
-        "Yield Prediction",
-        "Crop Recommendation",
-        "Alternative Crop",
-        "7 Day Forecast",
-        "30 Day Forecast",
-        "Model Comparison"
-    ]
+        "🏠 Home",
+        "📂 Dataset",
+        "🌾 Yield Prediction",
+        "🌱 Crop Recommendation",
+        "🌿 Alternative Crop",
+        "📈 7 Day Forecast",
+        "📅 30 Day Forecast",
+        "📊 Demand and Supply Analysis",
+        "🤖 Model Comparison"
+]
 )
-
 
 # =====================================================
 # HOME PAGE
 # =====================================================
-if page == "Home":
+if page == "🏠 Home":
 
-    st.header(
-        "AI-Based Agricultural Demand and Supply Forecasting System"
+    st.markdown("## 🌾 Smart Agriculture Dashboard")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric(
+        "🌾 Crops",
+        final_dataset["Crop"].nunique()
     )
 
-    st.write("""
-This project predicts crop yield using XGBoost and LSTM models.
+    col2.metric(
+        "🏛 States",
+        final_dataset["State"].nunique()
+    )
+
+    col3.metric(
+        "📍 Districts",
+        final_dataset["District"].nunique()
+    )
+
+    col4.metric(
+        "📄 Records",
+        len(final_dataset)
+    )
+
+    st.divider()
+
+    left, right = st.columns([2,1])
+
+    with left:
+
+        st.subheader("📘 Project Overview")
+
+        st.info("""
+
+This application predicts crop yield, demand and supply
+using Artificial Intelligence and Machine Learning.
 
 ### Features
 
@@ -191,71 +615,173 @@ This project predicts crop yield using XGBoost and LSTM models.
 
 ✅ Crop Recommendation
 
-✅ Alternative Crop Suggestion
+✅ Alternative Crop Recommendation
 
-✅ Model Comparison
+✅ Demand & Supply Analysis
 
 ✅ 7 Day Forecast
 
 ✅ 30 Day Forecast
 
-✅ Demand and Supply Analysis
+✅ Model Comparison
 
-✅ Download Forecast Report
 """)
 
-    st.subheader("Dataset Used")
+    with right:
 
-    st.write(
-        """
-1. Crop Production Dataset
+        st.subheader("🤖 Models Used")
 
-2. Weather Dataset
+        st.success("""
 
-3. Market Price Dataset
+✔ XGBoost
 
-4. Feature Engineered Dataset
-        """
+✔ LSTM
+
+✔ Demand Model
+
+✔ Supply Model
+
+""")
+
+    st.divider()
+
+    st.subheader("📊 Dataset Statistics")
+
+    c1, c2, c3 = st.columns(3)
+
+    c1.metric(
+        "Average Yield",
+        round(final_dataset["Yield"].mean(),2)
     )
 
+    c2.metric(
+        "Average Rainfall",
+        round(final_dataset["rainfall"].mean(),2)
+    )
+
+    c3.metric(
+        "Average Temperature",
+        round(final_dataset["avg_temp"].mean(),2)
+    )
+
+    st.divider()
+
+    st.subheader("🌾 Top 10 Crops")
+
+    crop_chart = (
+        final_dataset["Crop"]
+        .value_counts()
+        .head(10)
+    )
+
+    st.bar_chart(crop_chart)
+
+    st.divider()
+
+    st.subheader("🏛 Top States")
+
+    state_chart = (
+        final_dataset["State"]
+        .value_counts()
+        .head(10)
+    )
+
+    st.bar_chart(state_chart)
 
 # =====================================================
 # DATASET PAGE
 # =====================================================
-elif page == "Dataset":
+elif page == "📂 Dataset":
 
-    st.header("Final Dataset")
+    st.header("📂 Final Dataset")
 
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     col1.metric(
-        "Rows",
+        "📄 Total Rows",
         final_dataset.shape[0]
     )
 
     col2.metric(
-        "Columns",
+        "📑 Total Columns",
         final_dataset.shape[1]
     )
 
-    st.subheader("Dataset Preview")
+    col3.metric(
+        "🌾 Unique Crops",
+        final_dataset["Crop"].nunique()
+    )
+
+    st.divider()
+
+    st.subheader("📋 Dataset Preview")
 
     st.dataframe(
-        final_dataset.head(100)
+        final_dataset.head(100),
+        use_container_width=True
     )
 
-    st.subheader("Columns")
+    st.divider()
 
-    st.write(
-        final_dataset.columns.tolist()
+    st.subheader("📌 Column Names")
+
+    st.dataframe(
+        pd.DataFrame({"Column Names": final_dataset.columns}),
+        use_container_width=True
     )
 
+    st.divider()
+
+    st.subheader("📊 Missing Values")
+
+    missing = final_dataset.isnull().sum()
+
+    missing = missing[missing > 0]
+
+    if len(missing) == 0:
+        st.success("✅ No Missing Values Found")
+    else:
+        st.dataframe(
+            missing.reset_index().rename(
+                columns={
+                    "index":"Column",
+                    0:"Missing Values"
+                }
+            ),
+            use_container_width=True
+        )
+
+    st.divider()
+
+    st.subheader("📈 Dataset Statistics")
+
+    st.dataframe(
+        final_dataset.describe(),
+        use_container_width=True
+    )
+
+    st.divider()
+
+    csv = final_dataset.to_csv(index=False).encode("utf-8")
+
+    st.download_button(
+        "⬇ Download Dataset",
+        csv,
+        "final_dataset_enhanced.csv",
+        "text/csv"
+    )
     # =====================================================
 # YIELD PREDICTION
 # =====================================================
-elif page == "Yield Prediction":
+elif page == "🌾 Yield Prediction":
 
-    st.header("🌾 Yield Prediction")
+    st.header("🌾 AI Crop Yield Prediction")
+
+    st.markdown("""
+    Predict crop yield using **XGBoost** and **LSTM** models based on crop, weather and production details.
+    """)
+
+    st.divider()
 
     # --------------------------
     # State
@@ -339,7 +865,7 @@ elif page == "Yield Prediction":
     # =====================================================
     # PREDICT BUTTON
     # =====================================================
-    if st.button("Predict Yield"):
+    if st.button("🚀 Predict Yield"):
 
         # --------------------------------
         # Encode categorical columns
@@ -496,10 +1022,30 @@ elif page == "Yield Prediction":
             f"Predicted Yield = {prediction:.2f}Ton/Hectare"
         )
 
-        st.metric(
-            "Predicted Yield",
-            f"{prediction:.2f}Ton/Hectare",
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.metric(
+                "🌾 Predicted Yield",
+                f"{prediction:.2f} Ton/Hectare"
+            )
+
+        with col2:
+            st.metric(
+                 "🤖 Prediction Model",
+                "AI Model"
+            )
+
+        st.progress(100)
+
+        chart = pd.DataFrame(
+            {
+                "Yield": [prediction]
+            },
+            index=["Prediction"]
         )
+
+        st.bar_chart(chart)
 
 # =====================================================
 # CROP CATEGORY
@@ -561,120 +1107,172 @@ crop_category = {
 # =====================================================
 # CROP RECOMMENDATION
 # =====================================================
-if page == "Crop Recommendation":
+if page == "🌱 Crop Recommendation":
 
-    st.header("🌱 Crop Recommendation")
+    st.header("🌱 AI Crop Recommendation")
+
+    st.markdown("""
+    Get the best crop recommendation based on
+    predicted yield, weather conditions and AI analysis.
+    """)
+
+    st.divider()
 
     # Get crop from Yield Prediction page
-crop = st.session_state["crop"]
+    crop = st.session_state["crop"]
 
-if crop is None:
-    st.warning("Please run Yield Prediction first.")
-    st.stop()
+    if crop is None:
+        st.warning("Please run Yield Prediction first.")
+        st.stop()
 
 # Find category automatically
-category = None
+    category = None
 
-for key, value in crop_category.items():
-    if crop in value:
-        category = key
-        break
+    for key, value in crop_category.items():
+        if crop in value:
+            category = key
+            break
 
-st.success(f"Selected Crop : {crop}")
-st.info(f"Category : {category}")
-if category is None:
-    st.error("Category not found for selected crop.")
-    st.stop()
+    st.success(f"Selected Crop : {crop}")
+    st.info(f"Category : {category}")
+    if category is None:
+        st.error("Category not found for selected crop.")
+        st.stop()
 
-    category_crops = crop_category[category]
+        category_crops = crop_category[category]
 
-    temp_df = recommendation_df[
-        recommendation_df["Crop"].isin(
-            category_crops
+        temp_df = recommendation_df[
+            recommendation_df["Crop"].isin(
+                category_crops
+            )
+        ].copy()
+
+        # Coconut dominance fix
+        temp_df["Yield_log"] = np.log1p(
+            temp_df["Yield"]
         )
-    ].copy()
 
-    # Coconut dominance fix
-    temp_df["Yield_log"] = np.log1p(
-        temp_df["Yield"]
-    )
+        temp_df["Yield_norm"] = (
+            temp_df["Yield_log"]
+            /
+            temp_df["Yield_log"].max()
+        )
 
-    temp_df["Yield_norm"] = (
-        temp_df["Yield_log"]
-        /
-        temp_df["Yield_log"].max()
-    )
+        temp_df["Demand_norm"] = (
+            temp_df["Demand_Score"]
+            /
+            temp_df["Demand_Score"].max()
+        )
 
-    temp_df["Demand_norm"] = (
-        temp_df["Demand_Score"]
-        /
-        temp_df["Demand_Score"].max()
-    )
+        temp_df["Supply_norm"] = (
+            temp_df["Supply_Score"]
+            /
+            temp_df["Supply_Score"].max()
+        )
 
-    temp_df["Supply_norm"] = (
-        temp_df["Supply_Score"]
-        /
-        temp_df["Supply_Score"].max()
-    )
+        temp_df["Final_Score"] = (
 
-    temp_df["Final_Score"] = (
+            0.10 * temp_df["Yield_norm"]
 
-        0.10 * temp_df["Yield_norm"]
+            +
 
-        +
+            0.45 * temp_df["Demand_norm"]
 
-        0.45 * temp_df["Demand_norm"]
+            +
 
-        +
+            0.45 * temp_df["Supply_norm"]
 
-        0.45 * temp_df["Supply_norm"]
+        )
 
-    )
+        temp_df = temp_df.sort_values(
+            "Final_Score",
+            ascending=False
+        )
+        top_crop = temp_df.iloc[0]["Crop"]
 
-    temp_df = temp_df.sort_values(
-        "Final_Score",
-        ascending=False
-    )
-    top_crop = temp_df.iloc[0]["Crop"]
+    # avoid same crop recommendation
+        if top_crop == crop and len(temp_df) > 1:
+            top_crop = temp_df.iloc[1]["Crop"]
 
-# avoid same crop recommendation
-    if top_crop == crop and len(temp_df) > 1:
-        top_crop = temp_df.iloc[1]["Crop"]
+        st.session_state["recommended_crop"] = top_crop
+        st.session_state["recommended_crop"] = top_crop
 
-    st.session_state["recommended_crop"] = top_crop
-    st.session_state["recommended_crop"] = top_crop
+        st.success(
+        f"Recommended Crop : {top_crop}"
+        )
+        col1, col2 = st.columns(2)
 
-    st.success(
-    f"Recommended Crop : {top_crop}"
-)
+        with col1:
+            st.metric(
+                "🌱 Recommended Crop",
+                top_crop
+            )
 
-    st.subheader(
-        "Top Recommended Crops"
-    )
+        with col2:
+            st.metric(
+                "⭐ Status",
+                "Best Choice"
+            )
 
-    st.dataframe(
+        st.info(f"""
+        ### 🌾 AI Recommendation
 
-        temp_df[
-            [
-                "Crop",
-                "Yield",
-                "Demand_Score",
-                "Supply_Score",
-                "Final_Score"
+        **Recommended Crop:** {top_crop}
+
+        This crop is recommended based on
+        Yield Prediction,
+        Demand Score,
+        Supply Score,
+        and Final AI Score.
+        """)
+
+        st.subheader(
+            "Top Recommended Crops"
+        )
+
+        st.dataframe(
+
+            temp_df[
+                [
+                    "Crop",
+                    "Yield",
+                    "Demand_Score",
+                    "Supply_Score",
+                    "Final_Score"
+                ]
             ]
-        ]
 
-    )
+        )
+        report = f"""
+        Crop Recommendation Report
+
+        Recommended Crop : {top_crop}
+
+        Generated by
+        AI-Based Agricultural Demand & Supply Forecasting System
+        """
+
+        st.download_button(
+            label="📄 Download Recommendation Report",
+            data=report,
+            file_name="crop_recommendation_report.txt",
+            mime="text/plain"
+        )
 
 
 # =====================================================
 # ALTERNATIVE CROP
 # =====================================================
-elif page == "Alternative Crop":
+elif page == "🌿 Alternative Crop":
 
-    st.header(
-        "🌾 Alternative Crop Recommendation"
-    )
+    st.header("🌿 Alternative Crop Suggestion")
+
+    st.markdown("""
+    If the predicted crop is not suitable,
+    AI suggests the best alternative crop.
+    """)
+
+    st.divider()
 
     current_crop = st.session_state.get(
     "recommended_crop"
@@ -770,7 +1368,31 @@ elif page == "Alternative Crop":
 
     st.success(
        f"Recommended Alternative Crop : {best_crop}"
-)
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric(
+            "🌿 Alternative Crop",
+            best_crop
+        )
+
+    with col2:
+        st.metric(
+            "⭐ Recommendation",
+            "Suitable"
+        )
+
+    st.info(f"""
+    ### 🌱 AI Suggestion
+
+    **Alternative Crop:** {best_crop}
+
+    This crop is suggested because it has
+    better yield potential and favorable
+    demand & supply conditions.
+    """)    
 
     st.subheader(
         "Top Alternative Crops"
@@ -789,18 +1411,37 @@ elif page == "Alternative Crop":
         ].head(5)
 
     )
+    report = f"""
+    Alternative Crop Report
 
-   
+    Suggested Crop : {best_crop}
 
+    Generated by
+    AI-Based Agricultural Demand & Supply Forecasting System
+    """
+
+    st.download_button(
+        label="📄 Download Alternative Crop Report",
+        data=report,
+        file_name="alternative_crop_report.txt",
+        mime="text/plain"
+    )
 
 # =====================================================
 # MODEL COMPARISON
 # =====================================================
-elif page == "Model Comparison":
+elif page == "🤖 Model Comparison":
 
-    st.header(
-        "📊 Model Comparison"
-    )
+    st.header("🧠 AI Model Comparison")
+
+    st.markdown("""
+        Compare the performance of machine learning and deep learning models
+        using standard evaluation metrics.
+    """)
+
+    st.divider()
+
+    st.info("📊 Performance comparison between XGBoost and LSTM models.")
 
     st.dataframe(
         comparison_df
@@ -862,7 +1503,119 @@ elif page == "Model Comparison":
     )
 
     st.pyplot(fig)
-    # =====================================================
+    st.success("✅ Model Comparison Completed Successfully")
+
+    st.info(f"""
+    ### 📋 Model Summary
+
+    🏆 Best Model : XGBoost
+
+    📊 Compared Metrics:
+    • MAE
+    • RMSE
+    • R² Score
+
+    🤖 XGBoost achieved the highest R² Score and provides the best prediction performance based on the evaluation metrics.
+    """)
+
+    st.caption("🌾 AI-Based Agricultural Demand & Supply Forecasting System")
+
+# =====================================================
+# Demand & Supply Analysis
+# =====================================================
+elif page == "📊 Demand and Supply Analysis":
+
+    st.header("📊 AI Demand & Supply Analysis")
+
+    st.markdown("""
+    Analyze the predicted market demand and supply
+    using AI-generated scores.
+    """)
+
+    st.divider()
+
+    st.info("🤖 AI is evaluating the demand and supply of the selected crop.")
+    analysis_df = final_dataset[
+        [
+            "Crop",
+            "Demand_Score",
+            "Demand_Level",
+            "Supply_Score",
+            "Supply_Level",
+            "Market_Status",
+            "Recommendation"
+        ]
+    ].head(100)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("🌾 Total Crops", len(analysis_df))
+
+    with col2:
+        st.metric(
+            "📈 Avg Demand",
+            round(analysis_df["Demand_Score"].mean(), 2)
+        )
+
+    with col3:
+        st.metric(
+            "📦 Avg Supply",
+            round(analysis_df["Supply_Score"].mean(), 2)
+        )
+
+    st.dataframe(analysis_df)
+    st.subheader("📊 Demand vs Supply")
+
+    chart_df = analysis_df.set_index("Crop")
+
+    st.bar_chart(
+        chart_df[
+            [
+                "Demand_Score",
+                "Supply_Score"
+            ]
+        ]
+    
+    )
+    st.subheader("📈 Demand Trend")
+
+    st.area_chart(
+        chart_df[
+            ["Demand_Score"]
+        ]
+    )
+    st.success("✅ Demand & Supply Analysis Completed")
+
+    st.info(f"""
+    ### 📋 Market Summary
+
+    🌾 Records : {len(analysis_df)}
+
+    📈 Average Demand :
+    {round(analysis_df['Demand_Score'].mean(),2)}
+
+    📦 Average Supply :
+    {round(analysis_df['Supply_Score'].mean(),2)}
+
+    🤖 AI analysis completed successfully.
+    """)
+    csv = analysis_df.to_csv(index=False)
+
+    st.download_button(
+        label="📄 Download Demand & Supply Report",
+        data=csv,
+        file_name="demand_supply_analysis.csv",
+        mime="text/csv"
+    )
+    st.divider()
+
+    st.caption(
+        "🌾 AI-Based Agricultural Demand & Supply Forecasting System"
+    )
+
+    
+# =====================================================
 # FORECAST FUNCTION
 # =====================================================
 def forecast_future(crop_df, days):
@@ -977,11 +1730,17 @@ def forecast_future(crop_df, days):
 # =====================================================
 # 7 DAY FORECAST
 # =====================================================
-if page == "7 Day Forecast":
+if page == "📈 7 Day Forecast":
 
-    st.header(
-        "📈 7 Day Forecast"
-    )
+    st.header("📅 AI 7-Day Yield Forecast")
+
+    st.markdown("""
+    View the AI-generated crop yield forecast for the next **7 days**.
+    """)
+
+    st.divider()
+
+    st.info("🤖 AI is forecasting the crop yield for the next 7 days.")
 
     forecast_crop = st.session_state.get(
         "forecast_crop"
@@ -1036,31 +1795,78 @@ if page == "7 Day Forecast":
         "Predicted Yield": pred_7
     })
 
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric("📅 Days", "7")
+
+    with col2:
+        st.metric(
+            "📊 Avg Yield",
+            round(forecast_df["Predicted Yield"].mean(), 2)
+        )
+
+    with col3:
+        st.metric(
+            "📈 Max Yield",
+            round(forecast_df["Predicted Yield"].max(), 2)
+        )
+
     st.dataframe(
         forecast_df
     )
+    st.subheader("📈 Yield Trend")
 
     st.line_chart(
         forecast_df.set_index(
             "Day"
         )
     )
+    st.subheader("📊 Yield Comparison")
+
+    st.bar_chart(
+        forecast_df.set_index("Day")
+    )
+
+    st.success("✅ 7-Day Forecast Generated Successfully")
+
+    st.info(f"""
+    ### Forecast Summary
+
+    🌱 Crop : {forecast_crop}
+
+    📅 Forecast Days : 7
+
+    🤖 Model : LSTM
+    """)
+
+    csv = forecast_df.to_csv(index=False)
 
     st.download_button(
-        "Download CSV",
-        forecast_df.to_csv(index=False),
-        "7_day_forecast.csv"
+        label="📄 Download 7-Day Forecast Report",
+        data=csv,
+        file_name="7_day_forecast.csv",
+        mime="text/csv"
     )
+    st.divider()
+
+    st.caption("🌾 AI-Based Agricultural Demand & Supply Forecasting System")
 
 
 # =====================================================
 # 30 DAY FORECAST
 # =====================================================
-elif page == "30 Day Forecast":
+elif page == "📅 30 Day Forecast":
 
-    st.header(
-        "📈 30 Day Forecast"
-    )
+    st.header("📅 AI 30-Day Yield Forecast")
+
+    st.markdown("""
+    View the AI-generated crop yield forecast for the next **30 days**.
+    """)
+
+    st.divider()
+
+    st.info("🤖 AI is forecasting the crop yield for the next 30 days.")
 
     forecast_crop = st.session_state.get(
         "forecast_crop"
@@ -1114,20 +1920,67 @@ elif page == "30 Day Forecast":
         "Predicted Yield": pred_30
     })
 
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric(
+            "📅 Days",
+            "30"
+        )
+
+    with col2:
+        st.metric(
+            "📊 Avg Yield",
+            round(forecast_df["Predicted Yield"].mean(), 2)
+        )
+
+    with col3:
+        st.metric(
+            "📈 Max Yield",
+            round(forecast_df["Predicted Yield"].max(), 2)
+        )
+
     st.dataframe(
         forecast_df
     )
+
+    st.subheader("📈 Yield Trend")
 
     st.line_chart(
         forecast_df.set_index(
             "Day"
         )
     )
+    st.subheader("📊 Yield Comparison")
+
+    st.bar_chart(
+        forecast_df.set_index("Day")
+    )
+
+    st.success("✅ 30-Day Forecast Generated Successfully")
+
+    st.info(f"""
+    ### Forecast Summary
+
+    🌱 Crop : {forecast_crop}
+
+    📅 Forecast Days : 30
+
+    🤖 Model : LSTM
+    """)
+
+    csv = forecast_df.to_csv(index=False)
 
     st.download_button(
-        "Download CSV",
-        forecast_df.to_csv(index=False),
-        "30_day_forecast.csv"
+        label="📄 Download 30-Day Forecast Report",
+        data=csv,
+        file_name="30_day_forecast.csv",
+        mime="text/csv"
+    )
+    st.divider()
+
+    st.caption(
+        "🌾 AI-Based Agricultural Demand & Supply Forecasting System"
     )
 
     
